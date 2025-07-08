@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  app:
+  meshing_around:  # Updated service name
     build: .
-    container_name: meshing_around  # Updated container name
+    container_name: meshing_around
     ports:
       - "8000:8000"
     volumes:
