@@ -10,6 +10,6 @@ services:
       - .:/app
       - ./data:/app/data
       - ./config.ini:/app/config.ini
-    entrypoint: ["./script/docker/entrypoint.sh"]
+    entrypoint: ["/bin/bash", /app/script/docker/entrypoint.sh"]
     command: []
     restart: unless-stopped
