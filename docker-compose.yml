@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: meshing_around  # Updated container name
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./config.ini:/app/config.ini
+    entrypoint: ["./app/script/docker/entrypoint.sh"]
+    command: []
+    restart: unless-stopped
