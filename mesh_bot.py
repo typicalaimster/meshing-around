@@ -416,7 +416,7 @@ def handle_llm(message_from_id, channel_number, deviceID, message, publicChannel
         averageRuntime = sum(llmTotalRuntime) / len(llmTotalRuntime)
         msg = f"Average query time is: {int(averageRuntime)} seconds" if averageRuntime > 25 else ''
     else:
-        msg = "Please wait, response could take 30+ seconds. Fund the SysOp's GPU budget!"
+        msg = "Warming up the toaster... Please wait!"
 
     if msg != '':
         if (channel_number == publicChannel and antiSpam) or useDMForResponse:
