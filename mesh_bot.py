@@ -415,24 +415,21 @@ def handle_llm(message_from_id, channel_number, deviceID, message, publicChannel
         return "Please ask a question"
 
     # information for the user on how long the query will take on average
-    # Disabled average query time message to reduce spam
-    msg = ''
-    
-    # Uncomment the following lines if you want to show query time information:
-    # if llmRunCounter > 0:
-    #     averageRuntime = sum(llmTotalRuntime) / len(llmTotalRuntime)
-    #     msg = f"Average query time is: {int(averageRuntime)} seconds" if averageRuntime > 25 else ''
-    # else:
-    #     msg = "Warming up the toaster... Please wait!"
+    if llmRunCounter > 0:
+        # Calculate average runtime but don't send it to reduce spam
+        averageRuntime = sum(llmTotalRuntime) / len(llmTotalRuntime)
+        msg = ''  # Don't send average query time message
+    else:
+        msg = "Let me think..."
 
-    # if msg != '':
-    #     if (channel_number == publicChannel and antiSpam) or useDMForResponse:
-    #         # send via DM
-    #         send_message(msg, channel_number, message_from_id, deviceID)
-    #     else:
-    #         # send via channel
-    #         send_message(msg, channel_number, 0, deviceID)
-    #     time.sleep(responseDelay)
+    if msg != '':
+        if (channel_number == publicChannel and antiSpam) or useDMForResponse:
+            # send via DM
+            send_message(msg, channel_number, message_from_id, deviceID)
+        else:
+            # send via channel
+            send_message(msg, channel_number, 0, deviceID)
+        time.sleep(responseDelay)
     
     start = time.time()
 
