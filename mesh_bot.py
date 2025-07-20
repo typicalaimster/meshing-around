@@ -378,9 +378,9 @@ def handle_llm(message_from_id, channel_number, deviceID, message, publicChannel
     elif "askai" in message.lower():
         user_input = message.replace("askai", "")
     elif "meshy" in message.lower():
-        user_input = message.replace("meshy", "").strip()
+        user_input = message.lower()
     # Process the user input using the same logic as 'askai'
-        handle_command(user_input)    
+        handle_command(user_input)
     else:
         # likely a DM
         user_input = message
