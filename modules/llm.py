@@ -32,7 +32,7 @@ llmContext_fromGoogle = True # enable context from google search results adds to
 googleSearchResults = 3 # number of google search results to include in the context more results = more compute time
 antiFloodLLM = []
 llmChat_history = {}
-trap_list_llm = ("ask:", "askai")
+trap_list_llm = ("ask:", "askai", "meshy")
 
 meshBotAI = """
     FROM {llmModel}
