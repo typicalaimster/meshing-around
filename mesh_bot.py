@@ -32,6 +32,7 @@ def auto_response(message, snr, rssi, hop, pkiStatus, message_from_id, channel_n
     "ack": lambda: handle_ping(message_from_id, deviceID, message, hop, snr, rssi, isDM, channel_number),
     "ask:": lambda: handle_llm(message_from_id, channel_number, deviceID, message, publicChannel),
     "askai": lambda: handle_llm(message_from_id, channel_number, deviceID, message, publicChannel),
+    "meshy": lambda: handle_llm(message_from_id, channel_number, deviceID, message, publicChannel),
     "bbsack": lambda: bbs_sync_posts(message, message_from_id, deviceID),
     "bbsdelete": lambda: handle_bbsdelete(message, message_from_id),
     "bbshelp": bbs_help,
@@ -376,6 +377,8 @@ def handle_llm(message_from_id, channel_number, deviceID, message, publicChannel
         user_input = message.split(":")[1]
     elif "askai" in message.lower():
         user_input = message.replace("askai", "")
+    elif "meshy" in message.lower():
+        user_input = message.replace("meshy", "")
     else:
         # likely a DM
         user_input = message
