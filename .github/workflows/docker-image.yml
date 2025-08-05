@@ -1,10 +1,7 @@
-name: Docker Multi-Platform Build
+name: Docker ARM64 Build
 
 on:
-  push:
-    branches: [ "docker-compose" ]
-  pull_request:
-    branches: [ "docker-compose" ]
+  workflow_dispatch:
 
 jobs:
 
@@ -39,12 +36,12 @@ jobs:
           type=sha,prefix={{branch}}-
           type=raw,value=latest,enable={{is_default_branch}}
       
-    - name: Build and push multi-platform Docker image
+    - name: Build and push ARM64 Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Dockerfile
-        platforms: linux/amd64,linux/arm64,linux/arm/v7
+        platforms: linux/arm64
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         push: true
